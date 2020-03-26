@@ -21,7 +21,7 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping(value = "/delete/{id}")
+    @GetMapping(value = "/delete{id}")
     public ModelAndView deleteMovie(@PathVariable int id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/");
@@ -38,11 +38,11 @@ public class MovieController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit{id}", method = RequestMethod.GET)
     public ModelAndView editPage(@PathVariable("id") int id) {
         Movie movie = movieService.getById(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("test");
+        modelAndView.setViewName("editPage");
         modelAndView.getView();
         modelAndView.addObject("movie", movie);
         return modelAndView;

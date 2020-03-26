@@ -11,32 +11,35 @@
 <html>
 <head>
     <title>All movies</title>
+    <link href="<c:url value="/res/style.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <h2>Movies:</h2>
-<table>
-    <tr>
-        <th>title</th>
-        <th>year</th>
-        <th>genre</th>
-        <th>watched</th>
-        <th>action</th>
-    </tr>
-    <c:forEach var="movie" items="${movieList}">
+<div style="overflow-x:auto">
+    <table>
         <tr>
-            <td>${movie.title}</td>
-            <td>${movie.year}</td>
-            <td>${movie.genre}</td>
-            <td>${movie.watched}</td>
-            <td>
-                <c:url value="/edit/${movie.id}" var="edit"/>
-                <a href="${edit}">Edit</a>
-                <a href="/delete/${movie.id}">Delete</a>
-            </td>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Watched</th>
+            <th>Action</th>
         </tr>
-    </c:forEach>
-</table>
-
+        <c:forEach var="movie" items="${movieList}">
+            <tr>
+                <td>${movie.title}</td>
+                <td>${movie.year}</td>
+                <td>${movie.genre}</td>
+                <td>${movie.watched}</td>
+                <td>
+                    <c:url value="/edit${movie.id}" var="edit"/>
+                    <a href="${edit}">EDIT   </a>
+                    <c:url value="/delete${movie.id}" var="delete"/>
+                    <a href="${delete}">   DELETE</a>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
 <h2>Add</h2>
 <c:url value="/add" var="add"/>
 <a href="${add}">Add new film</a>
